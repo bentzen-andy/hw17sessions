@@ -1,13 +1,10 @@
+<body class="<%= cookies[:displayMode] %>">
+
 <%= render 'partials/navbar' %>
 
-<% if cookies[:displayMode] == "dark" %>
-  <% @classes = "login dark" %>
-<% else %>
-  <% @classes = "login light" %>
-<% end %>
+<main class="login">
+  <% if cookies[:displayMode] != "dark" %> <hr> <% end %>
 
-<main class="<%= @classes %>">
-  <hr>
   <div class="container">
     <h1>Log In</h1>
     <form action="<%= request.env['PATH_INFO'] %>" method="POST">
@@ -20,10 +17,8 @@
         <input type="password" class="form-control" name="password" id="password" aria-describedby="passwordHelp" placeholder="Password">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
-      <div><%= @error %></div>
-      <div><%= :error %></div>
-      <% if @error %>
-        <div class="error">Incorrect username or password.</div>
+      <% if flash[:alert] %>
+        <div class="error"><%= flash[:alert] %></div>
       <% end %>
     </form>
   </div>
@@ -31,3 +26,4 @@
 </main>
 
 <%= render 'partials/footer' %>
+</body>

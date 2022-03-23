@@ -1,5 +1,9 @@
 class PreferencesController < ApplicationController
   def index
+    if cookies[:displayMode] == "dark"
+      @checked = "checked"
+    end
+
     if cookies[:loggedIn] == 'false'
       redirect_to preferences_path + '/error'
     end
@@ -9,11 +13,15 @@ class PreferencesController < ApplicationController
   def displayPreference
     if cookies[:displayMode].blank?
       cookies[:displayMode] = { value: "dark", expires: 3.day }
+      @checked = "checked"
     elsif cookies[:displayMode] == "light"
       cookies[:displayMode] = { value: "dark", expires: 3.day }
+      @checked = "checked"
     else
       cookies[:displayMode] = { value: "light", expires: 3.day }
+      @checked = ""
     end
-    redirect_to preferences_path
+
+    render :template => "preferences/index"
   end
 end

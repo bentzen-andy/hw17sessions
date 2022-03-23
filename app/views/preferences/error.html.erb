@@ -1,13 +1,9 @@
+<body class="<%= cookies[:displayMode] %>">
+
 <%= render 'partials/navbar' %>
 
-<% if cookies[:displayMode] == "dark" %>
-  <% @classes = "preferences dark" %>
-<% else %>
-  <% @classes = "preferences light" %>
-<% end %>
-
-<main class="<%= @classes %>">
-  <hr>
+<main class="preferences">
+  <% if cookies[:displayMode] != "dark" %> <hr> <% end %>
 
   <h1>Error</h1>
   <p>Please log in to view preferences. </p>
@@ -16,3 +12,4 @@
 </main>
 
 <%= render 'partials/footer' %>
+</body>

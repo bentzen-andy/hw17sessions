@@ -5,17 +5,14 @@ class LoginController < ApplicationController
 
   def processed
     # check the credentials
-    # if params[:username] == "CIS658" && params[:password] == "WebArchitectures"
-    if params[:username] == "123" && params[:password] == "123"
+    # if params[:username] == "123" && params[:password] == "123"
+    if params[:username] == "CIS658" && params[:password] == "WebArchitectures"
       cookies[:loggedIn] = 'true'
-      # @validationError = false
       redirect_to home_path
     else
       cookies[:loggedIn] = 'false'
-      @error = true
-      render :template => "login/index", :locals => { :error => @error }
-      # render :template => "login/index", :locals => { :error => true }
-
+      flash[:alert] = "Incorrect username or password."
+      redirect_to login_path
     end
   end
 
