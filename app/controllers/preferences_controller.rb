@@ -1,16 +1,18 @@
 class PreferencesController < ApplicationController
   def index
+    @csrf_token = session[:_csrf_token]
+
     if cookies[:displayMode] == "dark"
       @checked = "checked"
     end
 
-    if cookies[:loggedIn] == 'false'
+    if cookies[:loginID] != session[:session_id]
       redirect_to preferences_path + '/error'
     end
   end
 
-  skip_before_action :verify_authenticity_token
   def displayPreference
+    @csrf_token = session[:_csrf_token]
     if cookies[:displayMode].blank?
       cookies[:displayMode] = { value: "dark", expires: 3.day }
       @checked = "checked"

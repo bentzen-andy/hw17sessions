@@ -7,17 +7,17 @@ class LoginController < ApplicationController
     # check the credentials
     # if params[:username] == "123" && params[:password] == "123"
     if params[:username] == "CIS658" && params[:password] == "WebArchitectures"
-      cookies[:loggedIn] = 'true'
+      cookies[:loginID] = { value: session[:session_id], expires: 3.day }
       redirect_to home_path
     else
-      cookies[:loggedIn] = 'false'
       flash[:alert] = "Incorrect username or password."
       redirect_to login_path
     end
   end
 
   def logout
-    cookies[:loggedIn] = 'false'
+    cookies[:loginID] = ""
+    reset_session
     redirect_to login_path
   end
 end

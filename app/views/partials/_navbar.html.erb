@@ -1,12 +1,13 @@
 <header class="navbar" id="top">
+
   <ul>
     <li><a href="/home">Home</a></li>
-    <% if cookies["loggedIn"] == "true" %>
+    <% if cookies["loginID"] == session[:session_id] %>
       <li><a href="/log-out">Log Out</a></li>
     <% else %>
       <li><a href="/login">Login</a></li>
     <% end %>
-    <% if cookies["loggedIn"] == "true" %>
+    <% if cookies["loginID"] == session[:session_id] %>
       <li><a href="/preferences">Preferences</a></li>
     <% end %>
   </ul>
