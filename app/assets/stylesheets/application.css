@@ -13,3 +13,180 @@
  *= require_tree .
  *= require_self
  */
+
+
+/* ========================================================================== */
+/* Shared                                                                     */
+/* ========================================================================== */
+* {
+    box-sizing: border-box;
+    text-align: left;
+    font-family: "Sora", sans-serif;
+    font-weight: 300;
+}
+
+body {
+    margin: 0;
+    display: grid;
+    grid-template-rows: 5rem auto 5rem;
+    grid-template-areas: "header" "main" "footer";
+    height: 100vh;
+    background-color: #eee;
+}
+
+.navbar {
+    height: 5rem;
+    padding: 1.5rem 2rem;
+    background-color: #fff;
+    color: #000;
+}
+
+.navbar ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar ul li {
+    margin-left: 1rem;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none !important;
+    color: #000 !important;
+    font-weight: 500 !important;
+}
+
+.navbar a:hover,
+.navbar a:active {
+    color: #2e3caf !important;
+}
+
+main {
+    background-color: #fff;
+    width: 100%;
+    /*max-width: 48rem;*/
+    padding: 0 2rem 4rem 2rem;
+    text-align: center;
+}
+
+footer {
+    height: 5rem;
+    padding: 1.5rem 2rem;
+    background-color: #333;
+    color: #fff;
+}
+
+footer ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+}
+
+footer a {
+    color: white !important;
+}
+
+a:hover,
+a:active {
+    color: #2E2F30 !important;
+}
+
+
+/* ========================================================================== */
+/* Home                                                                       */
+/* ========================================================================== */
+.home {
+
+}
+
+/* ========================================================================== */
+/* Login                                                                      */
+/* ========================================================================== */
+
+/* ========================================================================== */
+/* Preferences                                                                */
+/* ========================================================================== */
+
+/* The switch - the box around the slider
+ * Code taken from https://www.w3schools.com/howto/howto_css_switch.asp
+ */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox
+ * Code taken from https://www.w3schools.com/howto/howto_css_switch.asp
+ */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider
+ * Code taken from https://www.w3schools.com/howto/howto_css_switch.asp
+ */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders
+ * Code taken from https://www.w3schools.com/howto/howto_css_switch.asp
+ */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/*
+ * --------------------------------------------------------------------------
+ * END Preferences page
+ * ==========================================================================
+ */

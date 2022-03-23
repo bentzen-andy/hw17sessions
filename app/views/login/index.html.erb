@@ -1,7 +1,33 @@
 <%= render 'partials/navbar' %>
 
-<main class="login">
-  <div>this is my login page</div>
+<% if cookies[:displayMode] == "dark" %>
+  <% @classes = "login dark" %>
+<% else %>
+  <% @classes = "login light" %>
+<% end %>
+
+<main class="<%= @classes %>">
+  <hr>
+  <div class="container">
+    <h1>Log In</h1>
+    <form action="<%= request.env['PATH_INFO'] %>" method="POST">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" id="username" aria-describedby="usernameHelp" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" aria-describedby="passwordHelp" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <div><%= @error %></div>
+      <div><%= :error %></div>
+      <% if @error %>
+        <div class="error">Incorrect username or password.</div>
+      <% end %>
+    </form>
+  </div>
+
 </main>
 
 <%= render 'partials/footer' %>

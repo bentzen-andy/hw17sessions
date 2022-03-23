@@ -1,7 +1,32 @@
 <%= render 'partials/navbar' %>
 
-<main class="preferences">
-  <div>this is my preferences page</div>
+<% if cookies[:displayMode] == "dark" %>
+  <% @classes = "preferences dark" %>
+  <% @checked = "checked" %>
+<% else %>
+  <% @classes = "preferences light" %>
+  <% @checked = "" %>
+<% end %>
+
+<main class="<%= @classes %>">
+<hr>
+
+  <h1>User Preferences</h1>
+  <form action="<%= request.env['PATH_INFO'] %>" method="POST">
+
+    <% if cookies[:displayMode] == "dark" %>
+      <p>Change to Light Mode</p>
+    <% end %>
+    <% if cookies[:displayMode] == "light" %>
+      <p>Change to Dark Mode</p>
+    <% end %>
+    <label class="switch">
+      <input type="checkbox" onchange="this.form.submit()" <%= @checked %>>
+      <span class="slider round" ></span>
+    </label>
+
+  </form>
+
 </main>
 
 <%= render 'partials/footer' %>
